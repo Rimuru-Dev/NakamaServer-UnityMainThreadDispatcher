@@ -48,7 +48,7 @@ Also - I'm looking for additional maintainers who are still actively using this 
     }
 ```
 
-### Author Original realization
+### Author Original Realization
 @PimDeWitte
 
 
