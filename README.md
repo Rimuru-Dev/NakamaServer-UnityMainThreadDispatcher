@@ -34,7 +34,21 @@ Want to contribute? Great! If you find a bug or want to make improvements, simpl
 
 Also - I'm looking for additional maintainers who are still actively using this in production as I now run a startup and am not actively doing engineering work anymore. 
 
-### Author
+### Nakama Server Usage Example
+```C#
+    private void OnNakamaServerConnect()
+    {
+	// Get MonoBehaviour Instance
+        UnityMainThreadDispatcher mainThread = UnityMainThreadDispatcher.Instance();
+        
+        // Setup network event handlers.
+        Connection.GetSocket.ReceivedMatchmakerMatched += m => mainThread.Enqueue(() => OnReceivedMatchmakerMatched(m));
+        Connection.GetSocket.ReceivedMatchPresence += m => mainThread.Enqueue(() => OnReceivedMatchPresence(m));
+        Connection.GetSocket.ReceivedMatchState += m => mainThread.Enqueue(async () => await OnReceivedMatchState(m));
+    }
+```
+
+### Author Original realization
 @PimDeWitte
 
 
